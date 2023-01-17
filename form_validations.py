@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 def validate_pdf_file_extension(value):  # method validate pdf file.
     ext = os.path.splitext(value.name)[1]  # split the file object
-    valid_extensions = ['.pdf'] 
+    valid_extensions = ['.pdf']
 
     if not ext.lower() in valid_extensions:
         raise ValidationError(_('Unsupported file extension. Allowed only PDF.'))  # raise the form validation error message
@@ -36,3 +36,19 @@ class BaseValidationForm(forms.Form):
         label=_('PDF File'),
         validators=[validate_pdf_file_extension]  # check if uploaded file's extension is PDF.
     )
+
+    def __init__(self, *args, **kwargs):
+        super(BaseValidationForm, self).__init__(*args, **kwargs)
+
+    def clean_pdf_file(self):  # file extension validation using form clean method
+        pdf_file = self.cleaned_data.get('pdf_file')
+        if not pdf_file:  # validate if file present.
+            raise forms.ValidationError(_('Please enter the PDF file.'))
+
+        ext = os.path.splitext(pdf_file.name)[1]  # split the file and took the file extension
+        valid_extensions = ['.pdf']  # valid extension
+
+        if not ext.lower() in valid_extensions:  # validate the extension
+            raise forms.ValidationError(_('Unsupported file extension. Allowed only PDF.'))
+
+        return pdf_file
