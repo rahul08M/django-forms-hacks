@@ -1,1 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
 
+        <!-- method 1 -->
+        <!-- unpacks all the forms fields and their HTML attributes -->
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    
+    </body>
+</html>
