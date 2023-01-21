@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html>
     <body>
 
         <!-- Rendering form error messages -->
         <!-- ref : https://docs.djangoproject.com/en/4.1/topics/forms/#rendering-form-error-messages -->
+        
+        {% if form.errors %}
+            <p>{% translate "Please correct below errors." %}</p>
+        {% endif %}
         
         <form action="/your-name/" method="post">
             {% csrf_token %}
