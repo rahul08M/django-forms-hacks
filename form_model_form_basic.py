@@ -1,22 +1,33 @@
-import os    # import os library
-from django import forms    # import forms from django
-from django.utils.translation import gettext_lazy as _   
+import os
+from django import forms
+from django.utils.translation import gettext_lazy as _https://github.com/rahul08M/django-forms-hacks/blob/main/form_model_form_basic.py
 
-from django.contrib.auth.models import User    # import User model from django.contrib.auth.models
+from django.contrib.auth.models import User
 
 
-class BaseUserModelForm(forms.ModelForm):    # Defining the class "BaseUserModelForm" with inheritance from  forms.ModelForm
+class BaseUserModelForm(forms.ModelForm):
 
-    class Meta:    # Define the meta class
-        model = User    # Assign the model "User" to meta class
-        fields = ('first_name', 'last_name', 'email')    # Assign the fields first_name, last_name and email
+    """
+    Basic model form which connects with the User model
+    From has basic Meta class attributes, such as labels and help texts
+    """
 
-        labels = {    # Defining labels for fields
-            'first_name': _('First Name'),    # Field first_name label
-            'last_name': _('Last/Sur Name'),    # Field last_name label
-            'email': _('Email Address'),    # Field email label
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+        labels = {
+            'first_name': _('First Name'),
+            'last_name': _('Last/Sur Name'),
+            'email': _('Email Address'),
         }
 
-        help_texts = {    # Defining help_texts for fields
-            'email': _('Email address must be classic.'),    # Field email help_text
+        help_texts = {
+            'email': _('Email address must be classic.'),
         }
+
+    def clean_email(self, email):  # Clean method to validate the duplicate email address.
+
+        if User.objects.filter(email__iexact=email):  # iexact check for case-insensitive conditions.
+            raise forms.ValidationError(_(f"{email} already exists."))
+        return email
