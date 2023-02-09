@@ -1,4 +1,4 @@
-# Simple Cptcha using django
+# Simple Captcha using django
 ## Inplementation of [django-simple-captcha](https://django-simple-captcha.readthedocs.io/en/latest/usage.html)
 
 ### 1. Install django-simple-captcha 
