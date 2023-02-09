@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <body>
 
+        <!-- render individual forms fields and their HTML attributes -->
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+
+            <div class="form-control">
+                {{form.first_name}}
+                {% if form.errors.first_name %}
+                    <span>{{form.errors.first_name.as_text}}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-control">
+                {{form.last_name}}
+                {% if form.errors.last_name %}
+                    <span>{{form.errors.last_name.as_text}}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-control">  <!-- captcha html block -->
+                {{form.captcha}}
+                {% if form.errors.captcha %}
+                    <span>{{form.errors.captcha.as_text}}</span>
+                {% endif %}
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+
+    </body>
+</html>
