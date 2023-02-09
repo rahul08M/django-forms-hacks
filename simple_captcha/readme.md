@@ -1,4 +1,4 @@
-# Simple Cptcha using django
+# Simple Captcha using django
 
 ![Form Output](https://i.ibb.co/521dYQR/dj-simple-cap-Untitled.png)
 
