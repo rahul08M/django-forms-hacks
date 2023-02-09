@@ -20,3 +20,5 @@ urlpatterns += [
     path('captcha/', include('captcha.urls')),
 ]
 ```
+
+![Form Output](https://i.ibb.co/8Pgt0YF/random-chars.png)
