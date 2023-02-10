@@ -1,6 +1,6 @@
 # Simple Captcha using django
 
-![Form Output](https://i.ibb.co/521dYQR/dj-simple-cap-Untitled.png)
+![Simple Captcha using django](https://i.ibb.co/521dYQR/dj-simple-cap-Untitled.png)
 
 ## Inplementation of [django-simple-captcha](https://django-simple-captcha.readthedocs.io/en/latest/usage.html)
 
