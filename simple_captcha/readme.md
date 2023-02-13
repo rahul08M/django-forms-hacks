@@ -13,6 +13,7 @@ pip install django-simple-captcha
 ### 3. Migrate
 ```
 python manange.py migrate
+python manange.py migrate --settings <app_name>.settings # if you are using multiple settings
 python manange.py migrate --settings app.settings # if you are using multiple settings
 ```
 
