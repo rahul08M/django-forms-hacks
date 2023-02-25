@@ -1,4 +1,6 @@
 from django import forms
+from django.utils.translation import gettext as _
+
 
 
 class BaseHTMLAttrsForm(forms.Form):
@@ -14,7 +16,7 @@ class BaseHTMLAttrsForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'css-class',
-                'placeholder': 'First Name'
+                'placeholder': _('First Name')
             }
         )
     )
@@ -24,5 +26,5 @@ class BaseHTMLAttrsForm(forms.Form):
 
         # adding html attributes
         self.fields['first_name'].widget.attrs['class'] = 'css-class'
-        self.fields['first_name'].widget.attrs['placeholder'] = 'First Name'
+        self.fields['first_name'].widget.attrs['placeholder'] = _('First Name')
         
